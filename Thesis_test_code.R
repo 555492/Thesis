@@ -1,4 +1,3 @@
-rm(list = ls())
 
 #Set working directory
 setwd("/Users/ajlasijercic/Desktop")
@@ -468,9 +467,6 @@ edu_counts <- table(merged_data_cleaned$Education)
 print(edu_counts)
 edu_proportions <- prop.table(edu_counts)
 print(edu_proportions)*100
-# Quantity of F&V
-psych::describe(as.numeric(merged_data_cleaned$Quantity, rm.na = TRUE))
-merged_data_rm_outliers$Quantity <- as.numeric(merged_data_rm_outliers$Quantity)
 
 #Normality assumption
 shapiro.test(merged_data_cleaned$total_fruits_vegetables)
@@ -547,6 +543,10 @@ leveneTest(total_fruits_vegetables ~ as.factor(Norm_Condition), data = merged_da
 
   # Conformity
 psych::describe(as.numeric(merged_data_rm_outliers$Avg_conformity))
+
+# Quantity of F&V
+psych::describe(as.numeric(merged_data_cleaned$Quantity, rm.na = TRUE))
+merged_data_rm_outliers$Quantity <- as.numeric(merged_data_rm_outliers$Quantity)
 
 # ANOVA 
 anova_output <- merged_data_rm_outliers %>%
@@ -672,4 +672,3 @@ merged_data_rm_outliers <- merged_data_rm_outliers %>%
   ))
 
 process (data = merged_data_rm_outliers, y = "log_f_v", x = "Condition_numbers", w = "Avg_conformity", cov=c("Quantity"), model = 1, jn=1, mcx = 1, seed= 123)
-
