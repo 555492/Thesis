@@ -131,6 +131,11 @@ contingency_table_nationality <- table(merged_data_cleaned$Norm_Condition, merge
 contingency_table_nationality
 chi_square_nationality <- chisq.test(contingency_table_nationality)
 chi_square_nationality
+  #nationality
+contingency_table_nationality <- table(merged_data_cleaned$Norm_Condition, merged_data_cleaned$Nationality)
+contingency_table_nationality
+chi_square_nationality <- chisq.test(contingency_table_nationality)
+chi_square_nationality
   #education
 contingency_table_education <- table(merged_data_cleaned$Norm_Condition, merged_data_cleaned$Education)
 contingency_table_education
